@@ -1,5 +1,5 @@
 <template>
-  <div class="group cursor-pointer" @click="$emit('odabran', film.naslov)">
+  <div class="group cursor-pointer" @click="open">
     <div class="relative aspect-[2/3] w-full overflow-hidden rounded-[4px] transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:z-50">
       <img :src="film.slika" class="w-full h-full object-cover" />
     </div>
@@ -26,8 +26,17 @@
 </template>
 
 <script setup>
-// Definiramo PROPS
-defineProps(['film']);
-// Definiramo EMIT
-defineEmits(['odabran']);
+//defineProps
+const props = defineProps(['film']);
+const emit = defineEmits(['odabran']);
+
+function open() {
+  //Emit event za parent komponente
+  emit('odabran', props.film.naslov);
+
+  //koristimo props.film za new tab
+  const query = encodeURIComponent(`${props.film.naslov}`);
+  const url = `https://www.imdb.com/find?q=${query}`;
+  window.open(url, '_blank', 'noopener,noreferrer');
+}
 </script>
