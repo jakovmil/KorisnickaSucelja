@@ -27,7 +27,12 @@
 
 <script setup>
 //defineProps
-const props = defineProps(['film']);
+const props = defineProps({
+    film: {
+      type: Object,
+      required: true
+    }
+});
 const emit = defineEmits(['odabran']);
 
 function open() {

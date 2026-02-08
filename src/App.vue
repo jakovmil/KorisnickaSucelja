@@ -79,6 +79,10 @@ const obradiKlik = (naslov) => {
       <div v-if="filmovi.length === 0" class="flex justify-center mt-20">
          <div class="animate-pulse text-xl">Učitavanje sa HTTPS servera...</div>
       </div>
+      
+      <div v-if="filtriraniFilmovi.length === 0 && filmovi.length > 0" class="text-center py-20 text-gray-500">
+          Nema rezultata za pretragu: "{{ pretraga }}"
+      </div>
 
       <div v-else class="grid grid-cols-6 gap-x-4 gap-y-12">
         <MovieCard 
