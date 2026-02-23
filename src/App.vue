@@ -3,6 +3,7 @@ import { ref, onMounted, computed } from 'vue';
 import MovieCard from './components/MovieCard.vue';
 import Login from './components/Login.vue';
 import Profile from './components/Profile.vue';
+import Billboard from './components/Billboard.vue';
 
 //App
 const isLoggedin = ref(false);
@@ -68,16 +69,17 @@ const obradiKlik = (naslov) => {
       </div>
 
       <div class="flex items-center gap-4 sm:gap-6 ml-auto">
-        <div v-if="view === 'home'" class="relative flex items-center border border-white/20 px-3 py-1 bg-black hidden sm:flex">
+        <div v-if="view === 'home'" class="relative flex items-center border border-white/20 px-3 py-1 bg-black sm:flex">
            <span class="mr-2 text-xs"></span>
            <input v-model="pretraga" type="text" placeholder="Pretraži..." class="bg-transparent text-white text-sm w-[150px] md:w-[250px] focus:outline-none">
         </div>
 
-        <button @click="view = 'profile'" class="flex items-center gap-2 group">
+        <button @click="view = 'profile'" class="flex items-center gap-2 group p-1 border border-transparent rounded-sm transition-all">
           <img 
-          src="./assets/userpic.png" 
-          alt="Profile" 
-          class="w-8 h-8 object-cover rounded-sm"/>
+            src="./assets/userpic.png" 
+            alt="Profile" 
+            class="w-8 h-8 object-cover rounded-sm"
+          />
           <span class="text-sm hidden sm:inline" :class="view === 'profile' ? 'font-bold' : ''">Profil</span>
         </button>
 
@@ -87,32 +89,37 @@ const obradiKlik = (naslov) => {
       </div>
     </nav>
 
-    <main v-if="view === 'home'" class="px-4 md:px-12 pt-6 pb-20">
-      <div class="mb-6 border-b border-gray-800 pb-4">
-        <h2 class="text-2xl md:text-4xl font-bold mb-2">Popular Cartoon</h2>
-        <p class="text-blue-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">{{ status }}</p>
-      </div>
+    <main v-if="view === 'home'">
+      <Billboard :filmovi="filmovi" />
 
-      <div v-if="filmovi.length === 0" class="flex justify-center mt-20">
-         <div class="animate-pulse text-lg md:text-xl">Učitavanje...</div>
-      </div>
-      
-      <div v-else-if="filtriraniFilmovi.length === 0" class="text-center py-20 text-gray-500">
-          Nema rezultata za: "{{ pretraga }}"
-      </div>
+      <div class="px-4 md:px-12 pt-10 pb-20">
+        <div class="mb-6 border-b border-gray-800 pb-4">
+          <h2 class="text-2xl md:text-4xl font-bold mb-2">Popular Cartoon</h2>
+          <p class="text-blue-400 text-[10px] md:text-xs font-bold uppercase tracking-[0.2em]">{{ status }}</p>
+        </div>
 
-      <div v-else class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-3 gap-y-8 md:gap-x-4 md:gap-y-12">
-        <MovieCard 
-          v-for="film in filtriraniFilmovi" 
-          :key="film.id" 
-          :film="film" 
-          @odabran="obradiKlik"
-        />
+        <div v-if="filmovi.length === 0" class="flex justify-center mt-20">
+           <div class="animate-pulse text-lg md:text-xl">Učitavanje...</div>
+        </div>
+        
+        <div v-else-if="filtriraniFilmovi.length === 0" class="text-center py-20 text-gray-500">
+            Nema rezultata za: "{{ pretraga }}"
+        </div>
+
+        <div v-else class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-x-3 gap-y-8 md:gap-x-4 md:gap-y-12">
+          <MovieCard 
+            v-for="film in filtriraniFilmovi" 
+            :key="film.id" 
+            :film="film" 
+            @odabran="obradiKlik"
+          />
+        </div>
       </div>
     </main>
 
-    <main v-else-if="view === 'profile'">
+    <main v-else-if="view === 'profile'" class="px-4 md:px-12">
       <Profile @back="view = 'home'" />
     </main>
+
   </div>
 </template>
