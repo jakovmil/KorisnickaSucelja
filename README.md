@@ -1,5 +1,16 @@
-# Vue 3 + Vite
+node.js runtime
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+npm install
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+npm run dev
+
+
+
+Ovo je "Mini Netflix" (Educational Project / Edukacijski projekat)
+Ovo je demo aplikacija uradjena u sklopu kolegija Korisnicka Sucelja.
+
+API: Studio Ghibli API
+
+
+
+Napomena: Projekt je isključivo u edukacijske svrhe. Sva prava na brend "Netflix" pripadaju Netflixu, a prava na filmove pripadaju Studiju Ghibli.
