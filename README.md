@@ -9,6 +9,7 @@ npm run dev
 ---
 
 Ovo je "Mini Netflix" (Educational Project / Edukacijski projekat)
+
 Ovo je demo aplikacija uradjena u sklopu kolegija Korisnicka Sucelja.
 
 API: Studio Ghibli API
