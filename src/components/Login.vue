@@ -57,7 +57,7 @@ const handleLogin = () => {
 
       <div class="mt-16 text-[#737373]">
         <p>Novi na Mini Netflixu? <a href="#" class="text-white hover:underline">Registriraj se.</a></p>
-        <p class="text-sm mt-4">Ova stranica je zaštićena Google reCAPTCHA sustavom.</p>
+        <p class="text-sm mt-3">Ova stranica je zaštićena Google reCAPTCHA sustavom.</p>
       </div>
     </div>
   </div>
